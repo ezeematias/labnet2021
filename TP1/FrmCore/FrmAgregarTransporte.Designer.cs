@@ -147,7 +147,7 @@ namespace FrmCore
             this.MinimizeBox = false;
             this.Name = "FrmAgregarTransporte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Agregar Transporte";
+            this.Text = "TRANSPORTE BS AS";
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadPasajeros)).EndInit();
             this.gbxTrasportes.ResumeLayout(false);
             this.gbxTrasportes.PerformLayout();
