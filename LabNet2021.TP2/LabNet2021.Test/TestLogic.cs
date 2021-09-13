@@ -9,13 +9,13 @@ namespace LabNet2021.Test
     {
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
-        public void Logic_DivideByZero_ThrowException()
+        public void IntegerExtensions_DivideByZero_ThrowException()
         {
             //Arrange
             int number = 22;
 
             //Act   
-            Logic.DivideForZero(number);
+            number.DivideForZero();
 
             //Assert is handled by the ExpectedException
         }

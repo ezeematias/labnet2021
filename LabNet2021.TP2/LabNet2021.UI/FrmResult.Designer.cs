@@ -29,7 +29,9 @@ namespace LabNet2021.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmResult));
             this.lblResultado = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblResultado
@@ -45,14 +47,26 @@ namespace LabNet2021.UI
             this.lblResultado.Text = "Resultado de la división";
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(487, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Press [ESC]";
+            // 
             // FrmResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(555, 78);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblResultado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmResult";
@@ -68,5 +82,6 @@ namespace LabNet2021.UI
         #endregion
 
         public System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.Label label1;
     }
 }

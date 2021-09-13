@@ -21,8 +21,8 @@ namespace LabNet2021.UI
         private void btnDividirPorCero_Click(object sender, EventArgs e)
         {
             try
-            {
-                Logic.DivideForZero(Logic.ValidationInteger(this.txbDividirPorCero.Text));
+            {                
+                InvokeForm(Logic.ValidationInteger(this.txbDividirPorCero.Text).DivideForZero());                
             }
             catch (Exception ex)
             {
@@ -44,11 +44,6 @@ namespace LabNet2021.UI
             }
         }
 
-        private void InvokeForm(string message)
-        {
-            FrmResult frm = new FrmResult(message);
-            frm.ShowDialog();
-        }
 
         private void btnCandado_Click(object sender, EventArgs e)
         {
@@ -72,6 +67,16 @@ namespace LabNet2021.UI
             {
                 InvokeForm(ex.Message);                
             }
+        }
+
+        /// <summary>
+        /// Instance to the new form.
+        /// </summary>
+        /// <param name="message">Message to display.</param>
+        private void InvokeForm(string message)
+        {
+            FrmResult frm = new FrmResult(message);
+            frm.ShowDialog();
         }
     }
 }

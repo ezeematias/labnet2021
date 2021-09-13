@@ -34,11 +34,11 @@ namespace LabNet2021.UI
             this.gbxDividirPorCero = new System.Windows.Forms.GroupBox();
             this.txbDividirPorCero = new System.Windows.Forms.TextBox();
             this.gbxDividir = new System.Windows.Forms.GroupBox();
+            this.txbDivisor = new System.Windows.Forms.TextBox();
+            this.txbDividendo = new System.Windows.Forms.TextBox();
             this.btnDividir = new System.Windows.Forms.Button();
             this.btnCandado = new System.Windows.Forms.Button();
             this.btnBomba = new System.Windows.Forms.Button();
-            this.txbDividendo = new System.Windows.Forms.TextBox();
-            this.txbDivisor = new System.Windows.Forms.TextBox();
             this.gbxDividirPorCero.SuspendLayout();
             this.gbxDividir.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,22 @@ namespace LabNet2021.UI
             this.gbxDividir.TabStop = false;
             this.gbxDividir.Text = "DIVIDIR";
             // 
+            // txbDivisor
+            // 
+            this.txbDivisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDivisor.Location = new System.Drawing.Point(10, 51);
+            this.txbDivisor.Name = "txbDivisor";
+            this.txbDivisor.Size = new System.Drawing.Size(112, 22);
+            this.txbDivisor.TabIndex = 3;
+            // 
+            // txbDividendo
+            // 
+            this.txbDividendo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDividendo.Location = new System.Drawing.Point(10, 19);
+            this.txbDividendo.Name = "txbDividendo";
+            this.txbDividendo.Size = new System.Drawing.Size(112, 22);
+            this.txbDividendo.TabIndex = 2;
+            // 
             // btnDividir
             // 
             this.btnDividir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -128,22 +144,6 @@ namespace LabNet2021.UI
             this.btnBomba.UseVisualStyleBackColor = true;
             this.btnBomba.Click += new System.EventHandler(this.btnBomba_Click);
             // 
-            // txbDividendo
-            // 
-            this.txbDividendo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbDividendo.Location = new System.Drawing.Point(10, 19);
-            this.txbDividendo.Name = "txbDividendo";
-            this.txbDividendo.Size = new System.Drawing.Size(112, 22);
-            this.txbDividendo.TabIndex = 2;
-            // 
-            // txbDivisor
-            // 
-            this.txbDivisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbDivisor.Location = new System.Drawing.Point(10, 51);
-            this.txbDivisor.Name = "txbDivisor";
-            this.txbDivisor.Size = new System.Drawing.Size(112, 22);
-            this.txbDivisor.TabIndex = 3;
-            // 
             // FrmCore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +155,7 @@ namespace LabNet2021.UI
             this.Controls.Add(this.gbxDividir);
             this.Controls.Add(this.gbxDividirPorCero);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCore";
