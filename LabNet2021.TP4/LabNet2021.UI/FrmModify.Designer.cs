@@ -106,6 +106,7 @@ namespace LabNet2021.UI
             this.txbPhone.Name = "txbPhone";
             this.txbPhone.Size = new System.Drawing.Size(270, 26);
             this.txbPhone.TabIndex = 18;
+            this.txbPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbPhone_KeyDown);
             // 
             // txbID
             // 

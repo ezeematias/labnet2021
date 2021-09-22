@@ -128,5 +128,18 @@ namespace LabNet2021.UI
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        /// <summary>
+        /// Keypad lock for the telephone field.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txbPhone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (shipperFlag && (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z))
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

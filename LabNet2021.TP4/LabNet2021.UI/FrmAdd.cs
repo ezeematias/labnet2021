@@ -14,7 +14,7 @@ namespace LabNet2021.UI
 {
     public partial class FrmAdd : Form
     {
-        bool shipper = true;
+        bool shipperFlag = true;
         ShippersLogic shippersLogic;
         CategoriesLogic categoriesLogic;
 
@@ -22,10 +22,10 @@ namespace LabNet2021.UI
         /// Builder
         /// </summary>
         /// <param name="shipper"></param>
-        public FrmAdd(bool shipper)
+        public FrmAdd(bool shipperFlag)
         {
             InitializeComponent();
-            this.shipper = shipper;
+            this.shipperFlag = shipperFlag;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace LabNet2021.UI
         /// <param name="e"></param>
         private void FrmAdd_Load(object sender, EventArgs e)
         {
-            SetInfo(shipper);
+            SetInfo(shipperFlag);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace LabNet2021.UI
         {
             try
             {
-                if (shipper)
+                if (shipperFlag)
                 {
                     shippersLogic.Add(new Shippers { CompanyName = txbName.Text.Trim(), Phone = txbDesciption.Text.Trim() });
                 }
@@ -102,11 +102,10 @@ namespace LabNet2021.UI
         /// <param name="e"></param>
         private void txbDesciption_KeyDown(object sender, KeyEventArgs e)
         {           
-            if (shipper && (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z))
+            if (shipperFlag && (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z))
             {
                 e.SuppressKeyPress = true;
             }
         }
-
     }
 }
