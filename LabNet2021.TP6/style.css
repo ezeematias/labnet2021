@@ -1,0 +1,30 @@
+h1 {
+  font-family: "Times New Roman", Times, serif;
+}
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: medium;
+  font-weight: normal;
+}
+form {
+  background-color: dimgrey;
+  width: 15%;
+  padding: 10px;
+  color: turquoise;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
+#txtAge {
+  width: 95px;
+}
+.button {
+  background-color: teal;
+  padding: 5px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+#clean {
+  float: right;
+}

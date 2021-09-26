@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>LabNet2021.TP6</title>
+  </head>
+  <body>
+    <header>
+      <h1>CONTACTO</h1>
+    </header>
+    <section>
+      <h2>Completa tus datos.</h2>
+      <div>
+        <form id="infoUser">
+          <fieldset>
+            <legend>Información personal:</legend>
+            <label for="txtName">Nombre:</label>
+            <br />
+            <input
+              id="txtName"
+              type="text"
+              required
+              name="name"
+              placeholder="Ingrese nombre"
+            />
+            <br />
+            <label for="txtLastName">Apellido:</label>
+            <br />
+            <input
+              id="txtLastName"
+              type="text"
+              required
+              name="lastName"
+              placeholder="Ingrese apellido"
+            />
+            <br />
+            <label for="txtAge">Edad</label>
+            <br />
+            <input
+              id="txtAge"
+              type="number"
+              name="age"
+              placeholder="Ingrese edad"
+            />
+            <br />
+            <br />
+            <input type="radio" name="gender" value="male" />Masculino <br />
+            <input type="radio" name="gender" value="female" />Femenino <br />
+            <input type="radio" name="gender" value="other" />Otro <br />
+          </fieldset>
+          <fieldset>
+            <legend>Información adicional</legend>
+            <label for="txtCompany">Empresa:</label>
+            <br />
+            <input
+              id="txtCompany"
+              type="text"
+              required
+              name="company"
+              placeholder="Ingrese empresa"
+            />
+            <br />
+          </fieldset>
+          <button type="button" id="submit" class="button">Submit</button>
+          <button type="button" id="clean" class="button">
+            Limpiar campos
+          </button>
+        </form>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
