@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace LabNet2021.Logic
 {
-    public class Class1
+    interface ILogic<T>
     {
+        List<T> GetAll();
     }
 }

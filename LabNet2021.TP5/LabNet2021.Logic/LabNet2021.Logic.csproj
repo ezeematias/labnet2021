@@ -48,12 +48,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ClassLogic\BaseLogic.cs" />
+    <Compile Include="ClassLogic\CategoriesLogic.cs" />
+    <Compile Include="ClassLogic\CustomersLogic.cs" />
+    <Compile Include="InterfaceLogic\ILogic.cs" />
+    <Compile Include="ClassLogic\OrdersLogic.cs" />
+    <Compile Include="ClassLogic\ProductsLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LabNet2021.Data\LabNet2021.Data.csproj">
+      <Project>{a750d9b5-cb70-49bd-b421-d978c04bb0e3}</Project>
+      <Name>LabNet2021.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LabNet2021.Entities\LabNet2021.Entities.csproj">
+      <Project>{af79fc21-4516-4447-962e-47f471dc9073}</Project>
+      <Name>LabNet2021.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

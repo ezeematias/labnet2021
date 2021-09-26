@@ -32,5 +32,7 @@ namespace LabNet2021.Entities
         public short? ReorderLevel { get; set; }
 
         public bool Discontinued { get; set; }
+
+        public virtual Categories Categories { get; set; }
     }
 }
