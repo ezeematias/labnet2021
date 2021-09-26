@@ -43,89 +43,190 @@ namespace LabNet2021.UI
 
         private void btnQuery1_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 1\n\n  - Devolver objeto customer";
-            DataGridShow(new List<Customers>() { customersLogic.ObjectCustomers() });
+            try
+            {
+                this.rtbText.Text = "\nQuery 1\n\n  - Devolver objeto customer";
+                DataGridShow(new List<Customers>() { customersLogic.ObjectCustomers() });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
         private void btnQuery2_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 2\n\n  - Devolver todos los productos sin stock";
-            DataGridShow(productsLogic.AllProductsOutOfStock());
+            try
+            {
+                this.rtbText.Text = "\nQuery 2\n\n  - Devolver todos los productos sin stock";
+                DataGridShow(productsLogic.AllProductsOutOfStock());
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery3_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 3\n\n  - Devolver todos los productos que tienen stock y que cuestan más de 3 por unidad";
-            DataGridShow(productsLogic.AllProductsInStockAndCostMoreThree());
+            try
+            {
+                this.rtbText.Text = "\nQuery 3\n\n  - Devolver todos los productos que tienen stock y que cuestan más de 3 por unidad";
+                DataGridShow(productsLogic.AllProductsInStockAndCostMoreThree());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery4_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 4\n\n  - Devolver todos los customers de la Región WA";
-            DataGridShow(customersLogic.AllCustomersFromRegion("WA"));
+            try
+            {
+                this.rtbText.Text = "\nQuery 4\n\n  - Devolver todos los customers de la Región WA";
+                DataGridShow(customersLogic.AllCustomersFromRegion("WA"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery5_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 5\n\n  - Devolver el primer elemento o nulo de una lista de productos donde el ID de producto sea igual a 789";
-            List<Products> bufferProducts = new List<Products>() { productsLogic.ProductsForID(789) };
-            if (bufferProducts[0] != null)
+            try
             {
-                DataGridShow(bufferProducts);
+                this.rtbText.Text = "\nQuery 5\n\n  - Devolver el primer elemento o nulo de una lista de productos donde el ID de producto sea igual a 789";
+                List<Products> bufferProducts = new List<Products>() { productsLogic.ProductsForID(789) };
+                if (bufferProducts[0] != null)
+                {
+                    DataGridShow(bufferProducts);
+                }
+                else
+                {
+                    this.dgvList.DataSource = null;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.dgvList.DataSource = null;                
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnQuery6_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 6\n\n  - Devolver los nombre de los Customers. Mostrarlos en Mayuscula y en Minuscula.";
-            DataGridShow(customersLogic.NameCustomersUppercaseLowercase());
+            try
+            {
+                this.rtbText.Text = "\nQuery 6\n\n  - Devolver los nombre de los Customers. Mostrarlos en Mayuscula y en Minuscula.";
+                DataGridShow(customersLogic.NameCustomersUppercaseLowercase());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery7_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 7\n\n  - Devolver Join entre Customers y Orders donde los customers sean de la Región WA y la fecha de orden sea mayor a 1 / 1 / 1997";
-            DataGridShow(ordersLogic.CustomersOrdersForRegionAndDate("WA", new DateTime(1997-1-1)));
+            try
+            {
+                this.rtbText.Text = "\nQuery 7\n\n  - Devolver Join entre Customers y Orders donde los customers sean de la Región WA y la fecha de orden sea mayor a 1 / 1 / 1997";
+                DataGridShow(ordersLogic.CustomersOrdersForRegionAndDate("WA", new DateTime(1997 - 1 - 1)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery8_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 8\n\n  - Devolver los primeros 3 Customers de la  Región WA.";
-
+            try
+            {
+                this.rtbText.Text = "\nQuery 8\n\n  - Devolver los primeros 3 Customers de la  Región WA.";
+                DataGridShow(customersLogic.FirstCustomersPerRegion(3, "WA"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery9_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 9\n\n  - Devolver lista de productos ordenados por nombre.";
-            DataGridShow(ordersLogic.CustomerRegionWAJoinOrdersDateOver111997());
+            try
+            {
+                this.rtbText.Text = "\nQuery 9\n\n  - Devolver lista de productos ordenados por nombre.";
+                DataGridShow(productsLogic.ProductsOrderByName());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery10_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 10\n\n  - Devolver lista de productos ordenados por unit in stock de mayor a menor.";
-
+            try
+            {
+                this.rtbText.Text = "\nQuery 10\n\n  - Devolver lista de productos ordenados por unit in stock de mayor a menor.";
+                DataGridShow(productsLogic.ProductsOrderByStock());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery11_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 11\n\n  - Devolver las distintas categorías asociadas a los productos.";
+            try
+            {
+                this.rtbText.Text = "\nQuery 11\n\n  - Devolver las distintas categorías asociadas a los productos.";
+                DataGridShow(productsLogic.ProductsAndCategories());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery12_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 12\n\n  - Devolver el primer elemento de una lista de productos";
-
+            try
+            {
+                this.rtbText.Text = "\nQuery 12\n\n  - Devolver el primer elemento de una lista de productos";
+                List<Products> bufferList = new List<Products>() { productsLogic.FirstProducts() };
+                if (bufferList[0] != null)
+                {
+                    DataGridShow(bufferList);
+                }
+                else
+                {
+                    this.dgvList.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnQuery13_Click(object sender, EventArgs e)
         {
-            this.rtbText.Text = "\nQuery 13\n\n  - Devolver los customer con la cantidad de ordenes asociadas";
-
+            try
+            {
+                this.rtbText.Text = "\nQuery 13\n\n  - Devolver los customer con la cantidad de ordenes asociadas";
+                DataGridShow(customersLogic.CustomersAndOrders());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

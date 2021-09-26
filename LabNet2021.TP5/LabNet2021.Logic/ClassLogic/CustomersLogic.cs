@@ -16,7 +16,7 @@ namespace LabNet2021.Logic
         }
 
         public Customers ObjectCustomers()
-        {
+        {     
             var query = context.Customers.FirstOrDefault();
             return query;
         }
@@ -33,6 +33,25 @@ namespace LabNet2021.Logic
         {
             var query = from c in context.Customers
                         select new CustomersDTO() { CustomerID = c.CustomerID, CompanyNameUpper = c.CompanyName.ToUpper(), CompanyNameLower = c.CompanyName.ToLower() };
+            return query.ToList();
+        }
+
+        public List<CustomersDTO> FirstCustomersPerRegion(int count, string region)
+        {
+            var query = context.Customers.Select(c => new CustomersDTO {CustomerID = c.CustomerID,  CompanyName = c.CompanyName, ContactName = c.ContactName, Region = c.Region}).Where(c => c.Region == region).Take(count).ToList();
+            return query;
+        }
+
+        public List<CustomersDTO> CustomersAndOrders()
+        {
+            var query = from c in context.Customers
+                        select new CustomersDTO
+                        {
+                            CustomerID = c.CustomerID,
+                            CompanyName = c.CompanyName,
+                            CustomerOrders = context.Orders.Where(o => o.CustomerID == c.CustomerID).Count(), 
+                            Region = c.Region
+                        };
             return query.ToList();
         }
 

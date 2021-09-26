@@ -49,5 +49,7 @@ namespace LabNet2021.Entities.ClassDTO
 
         [StringLength(40)]
         public string CompanyNameUpper { get; set; }
+
+        public int CustomerOrders { get; set; }
     }
 }

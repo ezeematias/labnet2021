@@ -33,6 +33,38 @@ namespace LabNet2021.Logic
             return query;
         }
 
+        public List<ProductsDTO> ProductsOrderByName()
+        {
+            var query = context.Products.OrderBy(p => p.ProductName).Select(p => new ProductsDTO { ProductID = p.ProductID, ProductName = p.ProductName, UnitPrice = p.UnitPrice, UnitsInStock = p.UnitsInStock }).ToList();
+            return query;
+        }
+
+        public List<ProductsDTO> ProductsOrderByStock()
+        {
+            var query = context.Products.OrderByDescending(p => p.UnitsInStock).Select(p => new ProductsDTO { ProductID = p.ProductID, ProductName = p.ProductName, UnitPrice = p.UnitPrice, UnitsInStock = p.UnitsInStock }).ToList();
+            return query;
+        }
+
+        public List<ProductsDTO> ProductsAndCategories()
+        {
+            var query = from p in context.Products
+                        join c in context.Categories
+                        on p.CategoryID equals c.CategoryID
+                        select new ProductsDTO
+                        {
+                            ProductID = p.ProductID,
+                            ProductName = p.ProductName,
+                            CategoryName = c.CategoryName,
+                            CategoryDescription = c.Description                            
+                        };
+            return query.ToList();
+        }
+
+        public Products FirstProducts()
+        {
+            return context.Products.FirstOrDefault();
+        }
+
 
     }
 }
