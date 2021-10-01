@@ -12,7 +12,7 @@ namespace LabNet2021.MVC.Controllers
     public class CategoriesController : Controller
     {
         CategoriesLogic logic = new CategoriesLogic();
-        // GET: Shippers
+        // GET: Categories
         public ActionResult Index()
         {
             try

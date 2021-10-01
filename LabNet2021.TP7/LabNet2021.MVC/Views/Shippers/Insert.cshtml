@@ -1,4 +1,7 @@
 ﻿@model LabNet2021.MVC.Models.ShippersView
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Shippers Page";
 }
@@ -7,21 +10,19 @@
     <h1>Shippers Modify</h1>
     using (Html.BeginForm("Update", "Shippers", FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         <br />
         <br />
         <legend>SHIPPER ID @ViewBag.Id</legend>
-        <label for="Name">Company name: </label>
         <br />
-        @Html.TextBoxFor(s => s.CompanyName)
-        @Html.ValidationMessageFor(s => s.CompanyName)
+        @Html.LabelFor(s => s.CompanyName)
+        @Html.TextBoxFor(s => s.CompanyName, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.CompanyName, null, new { @class = "text-danger" })
         <br />
-        <br />
-        <label>Phone: </label>
-        <br />
-        @Html.TextBoxFor(s => s.Phone)
-        @Html.ValidationMessageFor(s => s.Phone)
 
-        <br />
+        @Html.LabelFor(s => s.Phone)
+        @Html.TextBoxFor(s => s.Phone, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Phone, null, new { @class = "text-danger" })
         <br />
         <input type="submit" class="btn btn-sm btn-primary " value="Save" />
     }
@@ -34,18 +35,21 @@ else
         <br />
         <br />
         <legend>NEW SHIPPER</legend>
-        <label>Company name: </label>
         <br />
-        @Html.TextBoxFor(s => s.CompanyName)
+        @Html.LabelFor(s => s.CompanyName)
+        @Html.TextBoxFor(s => s.CompanyName, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.CompanyName, null, new { @class = "text-danger" })
         <br />
+        @Html.LabelFor(s => s.Phone)
+        @Html.TextBoxFor(s => s.Phone, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Phone, null, new { @class = "text-danger" })
         <br />
-        <label>Phone: </label>
-        <br />
-        @Html.TextBoxFor(s => s.Phone)
-        <br />
-        <br />
-        <input type="submit" class="btn btn-sm btn-primary " value="Save" />
+        <input type="submit" class="btn btn-sm btn-primary"  value="Save" />
     }
 }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
 
 

@@ -1,5 +1,6 @@
 ﻿@model LabNet2021.MVC.Models.CategoriesView
-
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Categories Page";
 }
@@ -11,20 +12,16 @@
         <br />
         <br />
         <legend>CATEGORY ID @ViewBag.Id</legend>
-        <label for="Name">Category name: </label>
         <br />
-        @Html.TextBoxFor(c => c.CategoryName)
-        @Html.ValidationMessageFor(c => c.CategoryName)
+        @Html.LabelFor(c => c.CategoryName)
+        @Html.TextBoxFor(c => c.CategoryName, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.CategoryName, null, new { @class = "text-danger" })
         <br />
+        @Html.LabelFor(c => c.Description)
+        @Html.TextBoxFor(c => c.Description, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Description, null, new { @class = "text-danger" })
         <br />
-        <label>Description: </label>
-        <br />
-        @Html.TextBoxFor(c => c.Description)
-        @Html.ValidationMessageFor(c => c.Description)
-
-        <br />
-        <br />
-        <input type="submit" class="btn btn-sm btn-primary " value="Save" />
+        <input type="submit" class="btn btn-primary" value="Save"/>
     }
 }
 else
@@ -35,20 +32,19 @@ else
         <br />
         <br />
         <legend>NEW CATEGORY</legend>
-        <label for="Name">Category name: </label>
         <br />
-        @Html.TextBoxFor(c => c.CategoryName)
-        @Html.ValidationMessageFor(c => c.CategoryName)
+        @Html.LabelFor(c => c.CategoryName)
+        @Html.TextBoxFor(c => c.CategoryName, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.CategoryName, null, new { @class = "text-danger" })
         <br />
+        @Html.LabelFor(c => c.Description)
+        @Html.TextBoxFor(c => c.Description, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Description, null, new { @class = "text-danger" })
         <br />
-        <label>Description: </label>
-        <br />
-        @Html.TextBoxFor(c => c.Description)
-        @Html.ValidationMessageFor(c => c.Description)
-        <br />
-        <br />
-        <input type="submit" class="btn btn-sm btn-primary " value="Save" />
+        <input type="submit" class="btn btn-sm btn-primary" value="Save" />
     }
 }
-
-
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>

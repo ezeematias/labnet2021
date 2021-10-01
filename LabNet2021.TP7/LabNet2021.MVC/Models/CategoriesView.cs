@@ -12,11 +12,14 @@ namespace LabNet2021.MVC.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(15)]
+        [Display(Name = "Category Name")]
+        [Required(ErrorMessage = "Required")]
+        [StringLength(15, ErrorMessage = "Length between 3 and 15 characters", MinimumLength = 3)]
         public string CategoryName { get; set; }
 
+        [Display(Name = "Description")]
         [Column(TypeName = "ntext")]
+        [StringLength(100, ErrorMessage = "Maximum length is 100 characters")]
         public string Description { get; set; }
     }
 }
