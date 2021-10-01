@@ -48,9 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categories.cs" />
+    <Compile Include="ClassEntities\Categories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shippers.cs" />
+    <Compile Include="ClassEntities\Shippers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

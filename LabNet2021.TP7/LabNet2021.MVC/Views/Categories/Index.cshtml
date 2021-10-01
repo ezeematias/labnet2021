@@ -1,0 +1,30 @@
+﻿@model List<LabNet2021.MVC.Models.CategoriesView>
+
+@{
+    ViewBag.Title = "Categories Page";
+}
+<h1>Categories</h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Category name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td scope="row">@category.Id</td>
+                <td scope="row">@category.CategoryName</td>
+                <td scope="row">@category.Description</td>
+                <td scope="row">@Html.ActionLink("Update", "Update", new { id = category.Id, categoryName = category.CategoryName, description = category.Description }) || @Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { onclick = "return confirm ('Are you sure you want to delete?')" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    @Html.ActionLink("Insert Categories", "Insert")
+</div>

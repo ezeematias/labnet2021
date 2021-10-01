@@ -1,0 +1,54 @@
+﻿@model LabNet2021.MVC.Models.CategoriesView
+
+@{
+    ViewBag.Title = "Categories Page";
+}
+@if (@ViewBag.Type is "Modify")
+{
+    <h1>Categories Modify</h1>
+    using (Html.BeginForm("Update", "Categories", FormMethod.Post))
+    {
+        <br />
+        <br />
+        <legend>CATEGORY ID @ViewBag.Id</legend>
+        <label for="Name">Category name: </label>
+        <br />
+        @Html.TextBoxFor(c => c.CategoryName)
+        @Html.ValidationMessageFor(c => c.CategoryName)
+        <br />
+        <br />
+        <label>Description: </label>
+        <br />
+        @Html.TextBoxFor(c => c.Description)
+        @Html.ValidationMessageFor(c => c.Description)
+
+        <br />
+        <br />
+        <input type="submit" class="btn btn-sm btn-primary " value="Save" />
+    }
+}
+else
+{
+    <h1>Categories Add</h1>
+    using (Html.BeginForm("Insert", "Categories", FormMethod.Post))
+    {
+        <br />
+        <br />
+        <legend>NEW CATEGORY</legend>
+        <label for="Name">Category name: </label>
+        <br />
+        @Html.TextBoxFor(c => c.CategoryName)
+        @Html.ValidationMessageFor(c => c.CategoryName)
+        <br />
+        <br />
+        <label>Description: </label>
+        <br />
+        @Html.TextBoxFor(c => c.Description)
+        @Html.ValidationMessageFor(c => c.Description)
+        <br />
+        <br />
+        <input type="submit" class="btn btn-sm btn-primary " value="Save" />
+    }
+}
+
+

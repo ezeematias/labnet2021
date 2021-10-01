@@ -57,6 +57,10 @@ namespace LabNet2021.Logic
                     context.Categories.Remove(categoriesDelete);
                     context.SaveChanges();
                 }
+                else
+                {
+                    throw new Exception("The category to delete was not found.");
+                }
             }
             catch (Exception ex)
             {
@@ -78,6 +82,10 @@ namespace LabNet2021.Logic
                     bufferCategories.CategoryName = updateCategories.CategoryName;
                     bufferCategories.Description = updateCategories.Description;
                     context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("The category to modify was not found.");
                 }
             }
             catch (Exception ex)

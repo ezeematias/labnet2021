@@ -1,0 +1,51 @@
+﻿@model LabNet2021.MVC.Models.ShippersView
+@{
+    ViewBag.Title = "Shippers Page";
+}
+@if (@ViewBag.Type is "Modify")
+{
+    <h1>Shippers Modify</h1>
+    using (Html.BeginForm("Update", "Shippers", FormMethod.Post))
+    {
+        <br />
+        <br />
+        <legend>SHIPPER ID @ViewBag.Id</legend>
+        <label for="Name">Company name: </label>
+        <br />
+        @Html.TextBoxFor(s => s.CompanyName)
+        @Html.ValidationMessageFor(s => s.CompanyName)
+        <br />
+        <br />
+        <label>Phone: </label>
+        <br />
+        @Html.TextBoxFor(s => s.Phone)
+        @Html.ValidationMessageFor(s => s.Phone)
+
+        <br />
+        <br />
+        <input type="submit" class="btn btn-sm btn-primary " value="Save" />
+    }
+}
+else
+{
+    <h1>Shippers Add</h1>
+    using (Html.BeginForm("Insert", "Shippers", FormMethod.Post))
+    {
+        <br />
+        <br />
+        <legend>NEW SHIPPER</legend>
+        <label>Company name: </label>
+        <br />
+        @Html.TextBoxFor(s => s.CompanyName)
+        <br />
+        <br />
+        <label>Phone: </label>
+        <br />
+        @Html.TextBoxFor(s => s.Phone)
+        <br />
+        <br />
+        <input type="submit" class="btn btn-sm btn-primary " value="Save" />
+    }
+}
+
+

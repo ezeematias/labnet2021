@@ -14,19 +14,16 @@ namespace LabNet2021.UI
 {
     public partial class frmPrincipal : Form
     {
-        CategoriesLogic categoriesLogic;
-        ShippersLogic shippersLogic;
         Categories categories;
-        Shippers shippers;
+        Shippers shippers;        
         bool shipperFlag = true;
 
         public frmPrincipal()
         {
             InitializeComponent();
-            categoriesLogic = new CategoriesLogic();
-            shippersLogic = new ShippersLogic();
+
             categories = new Categories();
-            shippers = new Shippers();
+            shippers = new Shippers();            
         }
 
         private void btnCategories_Click(object sender, EventArgs e)
@@ -48,7 +45,7 @@ namespace LabNet2021.UI
 
         private void FormAdd()
         {
-            FrmAdd frmAdd = new FrmAdd(shipperFlag);
+            FrmAdd frmAdd = new FrmAdd(shipperFlag);            
             if (frmAdd.ShowDialog() == DialogResult.OK)
             {
                 LoadDataGrid(shipperFlag);
@@ -84,28 +81,30 @@ namespace LabNet2021.UI
         {
             try
             {
+                IABMLogic<Shippers> shippersDb = new ShippersLogic();
+                IABMLogic<Categories> categoriesDb = new CategoriesLogic();
                 this.dgvList.DataSource = null;
                 if (shipper)
                 {
-                    if (shippersLogic.GetAll().Count == 0)
+                    if (shippersDb.GetAll().Count == 0)
                     {
                         ButtonStatus(false);
                     }
                     else
                     {
-                        this.dgvList.DataSource = shippersLogic.GetAll();
+                        this.dgvList.DataSource = shippersDb.GetAll();
                         ButtonStatus(true);
                     }
                 }
                 else
                 {
-                    if (categoriesLogic.GetAll().Count == 0)
+                    if (categoriesDb.GetAll().Count == 0)
                     {
                         ButtonStatus(false);
                     }
                     else
                     {
-                        this.dgvList.DataSource = categoriesLogic.GetAll();
+                        this.dgvList.DataSource = categoriesDb.GetAll();
                         ButtonStatus(true);
                     }
                 }
@@ -125,17 +124,19 @@ namespace LabNet2021.UI
         {
             try
             {
+                IABMLogic<Shippers> shippersDb = new ShippersLogic();
+                IABMLogic<Categories> categoriesDb = new CategoriesLogic();
                 if (MessageBox.Show("Are you sure you want to delete the record?", "DELETE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     if (shipperFlag)
                     {
                         shippers = (Shippers)this.dgvList.CurrentRow.DataBoundItem;
-                        shippersLogic.Delete(shippers.ShipperID);
+                        shippersDb.Delete(shippers.ShipperID);
                     }
                     else
                     {
                         categories = (Categories)this.dgvList.CurrentRow.DataBoundItem;
-                        categoriesLogic.Delete(categories.CategoryID);
+                        categoriesDb.Delete(categories.CategoryID);
                     }
                     LoadDataGrid(shipperFlag);
                 }

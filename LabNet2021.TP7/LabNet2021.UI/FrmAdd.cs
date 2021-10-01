@@ -15,8 +15,6 @@ namespace LabNet2021.UI
     public partial class FrmAdd : Form
     {
         bool shipperFlag = true;
-        ShippersLogic shippersLogic;
-        CategoriesLogic categoriesLogic;
 
         /// <summary>
         /// Builder
@@ -48,13 +46,11 @@ namespace LabNet2021.UI
             {
                 this.lblName.Text = "Shipper Name";
                 this.lblPhone.Text = "Phone";
-                this.shippersLogic = new ShippersLogic();
             }
             else
             {
                 this.lblName.Text = "Category Name";
                 this.lblPhone.Text = "Description";
-                this.categoriesLogic = new CategoriesLogic();
             }
         }
 
@@ -67,13 +63,15 @@ namespace LabNet2021.UI
         {
             try
             {
+                IABMLogic<Shippers> shippersDb = new ShippersLogic();
+                IABMLogic<Categories> categoriesDb = new CategoriesLogic();
                 if (shipperFlag)
                 {
-                    shippersLogic.Add(new Shippers { CompanyName = txbName.Text.Trim(), Phone = txbDesciption.Text.Trim() });
+                    shippersDb.Add(new Shippers { CompanyName = txbName.Text.Trim(), Phone = txbDesciption.Text.Trim() });
                 }
                 else
                 {
-                    categoriesLogic.Add(new Categories { CategoryName = txbName.Text.Trim(), Description = txbDesciption.Text.Trim() });
+                    categoriesDb.Add(new Categories { CategoryName = txbName.Text.Trim(), Description = txbDesciption.Text.Trim() });
                 }
                 DialogResult = DialogResult.OK;
                 this.Close();

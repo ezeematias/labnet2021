@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LabNet2021.Logic
 {
-    interface IABMLogic<T>
+    public interface IABMLogic<T>
     {
         List<T> GetAll();
         void Add(T addItem);
