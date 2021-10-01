@@ -3,9 +3,9 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
 @{
-    ViewBag.Title = "Shippers Page";
+    ViewBag.Title = "Shippers";
 }
-@if (@ViewBag.Type is "Modify")
+@if (@ViewBag.Id != null)
 {
     <h1>Shippers Modify</h1>
     using (Html.BeginForm("Update", "Shippers", FormMethod.Post))
@@ -16,12 +16,12 @@
         <legend>SHIPPER ID @ViewBag.Id</legend>
         <br />
         @Html.LabelFor(s => s.CompanyName)
-        @Html.TextBoxFor(s => s.CompanyName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(s => s.CompanyName, null, new { @placeholder = "Company Name", @class = "form-control" })
         @Html.ValidationMessageFor(s => s.CompanyName, null, new { @class = "text-danger" })
         <br />
 
         @Html.LabelFor(s => s.Phone)
-        @Html.TextBoxFor(s => s.Phone, null, new { @class = "form-control" })
+        @Html.TextBoxFor(s => s.Phone, null, new { @placeholder = "(000) 0000-0000", @class = "form-control" })
         @Html.ValidationMessageFor(s => s.Phone, null, new { @class = "text-danger" })
         <br />
         <input type="submit" class="btn btn-sm btn-primary " value="Save" />
@@ -37,11 +37,11 @@ else
         <legend>NEW SHIPPER</legend>
         <br />
         @Html.LabelFor(s => s.CompanyName)
-        @Html.TextBoxFor(s => s.CompanyName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(s => s.CompanyName, null, new { @placeholder = "Company Name", @class = "form-control" })
         @Html.ValidationMessageFor(s => s.CompanyName, null, new { @class = "text-danger" })
         <br />
         @Html.LabelFor(s => s.Phone)
-        @Html.TextBoxFor(s => s.Phone, null, new { @class = "form-control" })
+        @Html.TextBoxFor(s => s.Phone, null, new { @placeholder = "(000) 0000-0000", @class = "form-control" })
         @Html.ValidationMessageFor(s => s.Phone, null, new { @class = "text-danger" })
         <br />
         <input type="submit" class="btn btn-sm btn-primary"  value="Save" />

@@ -81,8 +81,7 @@ namespace LabNet2021.MVC.Controllers
         }
 
         public ActionResult Update(string id, string companyName, string phone)
-        {
-            ViewBag.Type = "Modify";
+        {            
             ViewBag.Id = id;
             ViewBag.CompanyName = companyName;
             ViewBag.Phone = phone;

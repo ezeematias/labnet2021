@@ -2,9 +2,9 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
 @{
-    ViewBag.Title = "Categories Page";
+    ViewBag.Title = "Categories";
 }
-@if (@ViewBag.Type is "Modify")
+@if (@ViewBag.Id != null)
 {
     <h1>Categories Modify</h1>
     using (Html.BeginForm("Update", "Categories", FormMethod.Post))
@@ -14,14 +14,14 @@
         <legend>CATEGORY ID @ViewBag.Id</legend>
         <br />
         @Html.LabelFor(c => c.CategoryName)
-        @Html.TextBoxFor(c => c.CategoryName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(c => c.CategoryName, null, new { @placeholder = "Category Name", @class = "form-control" })
         @Html.ValidationMessageFor(c => c.CategoryName, null, new { @class = "text-danger" })
         <br />
         @Html.LabelFor(c => c.Description)
-        @Html.TextBoxFor(c => c.Description, null, new { @class = "form-control" })
+        @Html.TextBoxFor(c => c.Description, null, new { @placeholder = "Description", @class = "form-control" })
         @Html.ValidationMessageFor(c => c.Description, null, new { @class = "text-danger" })
         <br />
-        <input type="submit" class="btn btn-primary" value="Save"/>
+        <input type="submit" class="btn btn-primary" value="Save" />
     }
 }
 else
@@ -34,11 +34,11 @@ else
         <legend>NEW CATEGORY</legend>
         <br />
         @Html.LabelFor(c => c.CategoryName)
-        @Html.TextBoxFor(c => c.CategoryName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(c => c.CategoryName, null, new { @placeholder = "Category Name", @class = "form-control" })
         @Html.ValidationMessageFor(c => c.CategoryName, null, new { @class = "text-danger" })
         <br />
         @Html.LabelFor(c => c.Description)
-        @Html.TextBoxFor(c => c.Description, null, new { @class = "form-control" })
+        @Html.TextBoxFor(c => c.Description, null, new { @placeholder = "Description", @class = "form-control" })
         @Html.ValidationMessageFor(c => c.Description, null, new { @class = "text-danger" })
         <br />
         <input type="submit" class="btn btn-sm btn-primary" value="Save" />
