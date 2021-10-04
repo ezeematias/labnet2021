@@ -59,7 +59,7 @@ namespace LabNet2021.Logic
                 }
                 else
                 {
-                    throw new Exception("The category to delete was not found.");
+                    throw new Exception("The shippers to delete was not found.");
                 }
             }
             catch (Exception ex)
@@ -110,6 +110,24 @@ namespace LabNet2021.Logic
                     output = true;
                 }
                 return output;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Find Shippers
+        /// </summary>
+        /// <param name="id">Shippers ID</param>
+        /// <returns>If the Shippers exists, return Shipper, otherwise NULL</returns>
+        public Shippers Get(int id)
+        {
+            try
+            {
+                var bufferShippers = context.Shippers.Find(id);
+                return bufferShippers;
             }
             catch (Exception ex)
             {

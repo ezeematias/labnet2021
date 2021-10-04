@@ -13,5 +13,6 @@ namespace LabNet2021.Logic
         void Delete(int id);
         void Update(T updateItem);
         bool Find(int id);
+        T Get(int id);
     }
 }

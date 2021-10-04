@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.Test", "LabNet20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.MVC", "LabNet2021.MVC\LabNet2021.MVC.csproj", "{3512CBF5-CAC8-4727-A322-4491C2463FA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.WebApi", "LabNet2021.WebApi\LabNet2021.WebApi.csproj", "{08E47CCC-20B8-4BD3-89D5-D60B214C0C5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.Models", "LabNet2021.Models\LabNet2021.Models.csproj", "{CE4088C6-AEB5-4CD7-A162-7DFECC0C623E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{3512CBF5-CAC8-4727-A322-4491C2463FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3512CBF5-CAC8-4727-A322-4491C2463FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3512CBF5-CAC8-4727-A322-4491C2463FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E47CCC-20B8-4BD3-89D5-D60B214C0C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E47CCC-20B8-4BD3-89D5-D60B214C0C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E47CCC-20B8-4BD3-89D5-D60B214C0C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E47CCC-20B8-4BD3-89D5-D60B214C0C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4088C6-AEB5-4CD7-A162-7DFECC0C623E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4088C6-AEB5-4CD7-A162-7DFECC0C623E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4088C6-AEB5-4CD7-A162-7DFECC0C623E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4088C6-AEB5-4CD7-A162-7DFECC0C623E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

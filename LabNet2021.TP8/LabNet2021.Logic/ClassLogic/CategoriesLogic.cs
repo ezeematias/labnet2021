@@ -116,5 +116,27 @@ namespace LabNet2021.Logic
                 throw ex;
             }            
         }
+
+        /// <summary>
+        /// Find a Categories
+        /// </summary>
+        /// <param name="id">Categories ID</param>
+        /// <returns>If the Categories exists, return Category, otherwise NULL</returns>
+        public Categories Get(int id)
+        {
+            try
+            {                
+                var bufferCategories = context.Categories.Find(id);
+                if(bufferCategories == null)
+                {
+                    throw new Exception("The id is not valid.");
+                }
+                return bufferCategories;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
