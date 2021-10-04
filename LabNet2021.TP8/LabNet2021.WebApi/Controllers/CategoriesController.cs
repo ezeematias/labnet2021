@@ -55,11 +55,11 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         //POST: Add Category
-        public void Post(string categoryName, string description)
+        public void Post(CategoriesView categoriesView)
         {
             try
             {
-                var categoryEntity = new Categories { CategoryName = categoryName, Description = description };
+                var categoryEntity = new Categories { CategoryName = categoriesView.CategoryName, Description = categoriesView.Description };
                 logic.Add(categoryEntity);
             }
             catch (Exception ex)
@@ -69,13 +69,13 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         //PUT: Update Categories
-        public void Put(int id, string categoryName, string description)
+        public void Put(CategoriesView categoriesView)
         {
             try
             {
-                if (logic.Find(id))
+                if (logic.Find(categoriesView.Id))
                 {
-                    var categoryEntity = new Categories { CategoryID = id, CategoryName = categoryName, Description = description };
+                    var categoryEntity = new Categories { CategoryID = categoriesView.Id, CategoryName = categoriesView.CategoryName, Description = categoriesView.Description };
                     logic.Update(categoryEntity);
                 }
                 else

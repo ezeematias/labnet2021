@@ -1,7 +1,7 @@
 ﻿@model LabNet2021.Models.PokeModels.PokeListView
 @{
     ViewBag.Title = "API Pokemon";
-}
+}  
 <h1>API Pokemon</h1>
 <table class="table">
     <thead class="thead-dark">
@@ -14,12 +14,13 @@
         @foreach (var pokemon in Model.ListPokemons)
         {
             <tr>
-                <td scope="row">@pokemon.NamePokemon</td>
-                <td scope="row">@pokemon.</td>
+                <td scope="row">@pokemon.NamePokemon</td>                              
+                <td scope="row">@pokemon.Url</td>
             </tr>
         }
     </tbody>
 </table>
+
 
 
 

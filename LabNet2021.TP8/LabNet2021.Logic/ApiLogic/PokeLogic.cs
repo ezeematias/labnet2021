@@ -36,7 +36,7 @@ namespace LabNet2021.Logic.ApiLogic
                 using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     response = streamReader.ReadToEnd();
-                    result = Deserialize<PokeListView>(response);
+                    result = Deserialize<PokeListView>(response);                    
                     return result;
                 }
             }

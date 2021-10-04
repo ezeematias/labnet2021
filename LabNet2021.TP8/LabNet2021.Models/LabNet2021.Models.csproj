@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtensionModels\ExtensionMethods.cs" />
     <Compile Include="PokeModels\PokeListView.cs" />
     <Compile Include="PokeModels\PokeStatsView.cs" />
     <Compile Include="PokeModels\PokeView.cs" />

@@ -15,13 +15,7 @@ namespace LabNet2021.WebApi.Controllers
     {
         ShippersLogic logic = new ShippersLogic();
 
-        // GET: Alls Shippers
-        /// <summary>
-        /// asdasdadasdasd
-        /// </summary>
-        /// <returns>Progbando</returns>
-        /// <response> PRueba</response>
-        /// <remarks> Probando </remarks>       
+        // GET: Alls Shippers    
         public List<ShippersView> Get()
         {
             try
@@ -40,6 +34,7 @@ namespace LabNet2021.WebApi.Controllers
                 throw ex;
             }
         }
+
         // GET: Shippers  
         public ShippersView Get(int id)
         {
@@ -61,11 +56,11 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         // POST: Add Shippers
-        public void Post(string companyName, string phone)
+        public void Post(ShippersView shippersView)
         {
             try
             {
-                var shipperEntity = new Shippers { CompanyName = companyName, Phone = phone };
+                var shipperEntity = new Shippers {  CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
                 logic.Add(shipperEntity);
             }
             catch (Exception ex)
@@ -75,13 +70,13 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         // PUT: Update Shipper
-        public void Put(int id, string companyName, string phone)
+        public void Put(ShippersView shippersView)
         {
             try
             {
-                if (logic.Find(id))
+                if (logic.Find(shippersView.Id))
                 {
-                    var shipperEntity = new Shippers { ShipperID = id, CompanyName = companyName, Phone = phone };
+                    var shipperEntity = new Shippers { ShipperID = shippersView.Id, CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
                     logic.Update(shipperEntity);
                 }else
                 {
@@ -106,10 +101,5 @@ namespace LabNet2021.WebApi.Controllers
                 throw ex;
             }
         }
-
-
-
-
-
     }
 }
