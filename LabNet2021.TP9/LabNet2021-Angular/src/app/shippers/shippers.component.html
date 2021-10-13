@@ -1,0 +1,38 @@
+<div class="row justify-content-sm-center pt-5">
+  <div class="form col-sm-5 shadow round pb-3">
+    <div>
+      <h1 class="text-center pt-1">Shippers <button class="buttonAdd" mat-mini-fab color="primary" (click)="show = !show">
+        <mat-icon>{{status}}</mat-icon>
+      </button></h1>
+      <app-form-shippers *ngIf="show"></app-form-shippers>
+  </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Company Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shippers of ShippersList">
+          <th scope="row">{{ shippers.Id }}</th>
+          <td>{{ shippers.CompanyName }}</td>
+          <td>{{ shippers.Phone }}</td>
+          <td>
+            <button mat-mini-fab color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+          <td>
+            <button mat-mini-fab color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

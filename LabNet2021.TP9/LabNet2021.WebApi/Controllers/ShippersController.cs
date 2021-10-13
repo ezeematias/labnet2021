@@ -7,15 +7,20 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
+using System.Web.Mvc;
 
 namespace LabNet2021.WebApi.Controllers
 {
+    [System.Web.Http.RoutePrefix("Api/Shippers")]
     public class ShippersController : ApiController
     {
         ShippersLogic logic = new ShippersLogic();
 
-        // GET: Alls Shippers    
+        // GET: Alls Shippers
+        [System.Web.Http.HttpGet]        
         public List<ShippersView> Get()
         {
             try
@@ -36,6 +41,8 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         // GET: Shippers  
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("GetShippersById/{shippersId}")]
         public ShippersView Get(int id)
         {
             try
@@ -56,12 +63,21 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         // POST: Add Shippers
-        public void Post(ShippersView shippersView)
+        [System.Web.Http.HttpPost] 
+        public IHttpActionResult Post(ShippersView shippersView)
         {
             try
             {
-                var shipperEntity = new Shippers {  CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
-                logic.Add(shipperEntity);
+                if (shippersView != null)
+                {
+                    var shipperEntity = new Shippers { CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
+                    logic.Add(shipperEntity);
+                    return Ok("Successfully added");
+                }
+                else
+                {
+                    return BadRequest("Add failed.");
+                }
             }
             catch (Exception ex)
             {
@@ -70,17 +86,27 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         // PUT: Update Shipper
-        public void Put(ShippersView shippersView)
+        [System.Web.Http.HttpPut]
+        [System.Web.Http.Route("UpdateShippers")]
+        public IHttpActionResult Put(ShippersView shippersView)
         {
             try
             {
-                if (logic.Find(shippersView.Id))
+                if (shippersView != null)
                 {
-                    var shipperEntity = new Shippers { ShipperID = shippersView.Id, CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
-                    logic.Update(shipperEntity);
+                    if (logic.Find(shippersView.Id))
+                    {
+                        var shipperEntity = new Shippers { ShipperID = shippersView.Id, CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
+                        logic.Update(shipperEntity);
+                        return Ok("Successfully modified");
+                    }
+                    else
+                    {
+                        throw new Exception("The id is not valid.");
+                    }
                 }else
                 {
-                    throw new Exception("The id is not valid.");
+                    return BadRequest("Modification failed");
                 }
             }
             catch (Exception ex)
@@ -90,11 +116,21 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         // DELETE: Delete Shipper
-        public void Delete(int id)
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.Route("DeleteShippers")]
+        public IHttpActionResult Delete(int id)
         {
             try
             {
-                logic.Delete(id);
+                if (logic.Find(id))
+                {
+                    logic.Delete(id);
+                    return Ok("Successfully removed");
+                }
+                else
+                {
+                    throw new Exception("The id is not valid.");
+                }
             }
             catch (Exception ex)
             {
