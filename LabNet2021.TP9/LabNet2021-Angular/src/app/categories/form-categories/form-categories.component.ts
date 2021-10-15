@@ -56,7 +56,6 @@ export class FormCategoriesComponent implements OnInit {
   }
 
   onSubmit(): void {
-    //console.log(this.form.value);
   }
 
   onClickClean(): void {

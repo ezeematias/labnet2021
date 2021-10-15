@@ -32,7 +32,6 @@ export class ShippersComponent implements OnInit {
   getShippers() {
     this.ShippersService.getShippers().subscribe(res => {
       this.ShippersList = res;
-      console.log(this.ShippersList);
     },    error => this.errorMessage("No shippers found")
     );
   }

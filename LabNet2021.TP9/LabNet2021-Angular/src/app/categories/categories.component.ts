@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
 import Swal from 'sweetalert2';
 import { Categories } from './models/categories';
 import { CategoriesService } from './services/categories.service';
@@ -33,7 +32,6 @@ export class CategoriesComponent implements OnInit {
   getCategories() {
     this.categoriesService.getCategories().subscribe(res => {
       this.categoriesList = res;
-      console.log(this.categoriesList);
     },    error => this.errorMessage("No categories found")
     );
   }
