@@ -20,19 +20,26 @@ namespace LabNet2021.WebApi.Controllers
         ShippersLogic logic = new ShippersLogic();
 
         // GET: Alls Shippers
-        [System.Web.Http.HttpGet]        
-        public List<ShippersView> Get()
+        [System.Web.Http.HttpGet]
+        public IHttpActionResult Get()
         {
             try
             {
                 List<Shippers> shippers = logic.GetAll();
-                List<ShippersView> shippersViews = shippers.Select(s => new ShippersView
+                if (shippers != null)
                 {
-                    Id = s.ShipperID,
-                    CompanyName = s.CompanyName,
-                    Phone = s.Phone
-                }).ToList();
-                return shippersViews;
+                    List<ShippersView> shippersViews = shippers.Select(s => new ShippersView
+                    {
+                        Id = s.ShipperID,
+                        CompanyName = s.CompanyName,
+                        Phone = s.Phone
+                    }).ToList();
+                    return Ok(shippersViews);
+                }
+                else
+                {
+                    return BadRequest("Get shipper failed.");
+                }
             }
             catch (Exception ex)
             {
@@ -42,19 +49,25 @@ namespace LabNet2021.WebApi.Controllers
 
         // GET: Shippers  
         [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("GetShippersById/{shippersId}")]
-        public ShippersView Get(int id)
+        public IHttpActionResult Get(int id)
         {
             try
             {
                 Shippers shippers = logic.Get(id);
-                ShippersView shippersView = new ShippersView
+                if (shippers != null)
                 {
-                    Id = shippers.ShipperID,
-                    CompanyName = shippers.CompanyName,
-                    Phone = shippers.Phone
-                };
-                return shippersView;
+                    ShippersView shippersView = new ShippersView
+                    {
+                        Id = shippers.ShipperID,
+                        CompanyName = shippers.CompanyName,
+                        Phone = shippers.Phone
+                    };
+                    return Ok(shippersView);
+                }
+                else
+                {
+                    return BadRequest("Get shipper failed.");
+                }
             }
             catch (Exception ex)
             {
@@ -63,7 +76,7 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         // POST: Add Shippers
-        [System.Web.Http.HttpPost] 
+        [System.Web.Http.HttpPost]
         public IHttpActionResult Post(ShippersView shippersView)
         {
             try
@@ -87,24 +100,18 @@ namespace LabNet2021.WebApi.Controllers
 
         // PUT: Update Shipper
         [System.Web.Http.HttpPut]
-        [System.Web.Http.Route("UpdateShippers")]
         public IHttpActionResult Put(ShippersView shippersView)
         {
             try
             {
-                if (shippersView != null)
+                if (shippersView != null && logic.Find(shippersView.Id))
                 {
-                    if (logic.Find(shippersView.Id))
-                    {
-                        var shipperEntity = new Shippers { ShipperID = shippersView.Id, CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
-                        logic.Update(shipperEntity);
-                        return Ok("Successfully modified");
-                    }
-                    else
-                    {
-                        throw new Exception("The id is not valid.");
-                    }
-                }else
+
+                    var shipperEntity = new Shippers { ShipperID = shippersView.Id, CompanyName = shippersView.CompanyName, Phone = shippersView.Phone };
+                    logic.Update(shipperEntity);
+                    return Ok("Successfully modified");
+                }
+                else
                 {
                     return BadRequest("Modification failed");
                 }
@@ -117,7 +124,6 @@ namespace LabNet2021.WebApi.Controllers
 
         // DELETE: Delete Shipper
         [System.Web.Http.HttpDelete]
-        [System.Web.Http.Route("DeleteShippers")]
         public IHttpActionResult Delete(int id)
         {
             try
@@ -129,7 +135,7 @@ namespace LabNet2021.WebApi.Controllers
                 }
                 else
                 {
-                    throw new Exception("The id is not valid.");
+                    return BadRequest("The id is not valid.");
                 }
             }
             catch (Exception ex)

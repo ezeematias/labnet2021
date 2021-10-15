@@ -126,11 +126,7 @@ namespace LabNet2021.Logic
         {
             try
             {                
-                var bufferCategories = context.Categories.Find(id);
-                if(bufferCategories == null)
-                {
-                    throw new Exception("The id is not valid.");
-                }
+                var bufferCategories = context.Categories.Find(id); 
                 return bufferCategories;
             }
             catch (Exception ex)

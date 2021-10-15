@@ -1,1 +1,49 @@
-<p>categories works!</p>
+<div class="row justify-content-sm-center pt-5">
+  <div class="form col-sm-6 shadow round pb-2">
+    <div>
+      <h1 class="text-center pt-1">Categories
+        <button *ngIf="status=='minimize'"class="buttonAdd" mat-mini-fab color="primary" (click)="show = false" (click)="categoriesEdit = false" (click)="cancelSearch(true)">
+          <mat-icon>redo</mat-icon></button>
+        <button class="buttonAdd" mat-mini-fab color="primary" (click)="show = true" (click)="categoriesEdit = false" (click)="searchCategories = false" (click)="cancelSearch(true)">
+        <mat-icon>library_add</mat-icon>
+      </button>
+      <button class="buttonAdd" mat-mini-fab color="primary"(click)="show = true" (click)="searchSet()"><mat-icon>search</mat-icon></button>
+    </h1>
+      <app-form-categories [categoriesParent]="sendCategories" [edit]="categoriesEdit" [search]="searchCategories" *ngIf="show" (cancelSearch)="cancelSearch($event)" (idSearch)="getCategoriesById($event)"  ></app-form-categories>
+      <table mat-table [dataSource]="categoriesList" class="table table-responsive">
+        <ng-container matColumnDef="ID">
+          <th  *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let categories"> {{categories.Id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Category Name">
+          <th  *matHeaderCellDef>Category Name</th>
+          <td mat-cell *matCellDef="let categories"> {{categories.CategoryName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Description">
+          <th  *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let categories"> {{categories.Description}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Edit">
+          <th  *matHeaderCellDef mat-sort-header> Edit </th>
+          <td mat-cell *matCellDef="let categories"> <button class="buttonEdit" mat-icon-button
+            type="button" mat-raised-button color="accent" (click)="show = true"
+            matTooltip="Edit" (click)="updateSet(categories)">
+          <mat-icon>edit</mat-icon>
+          </button></td>
+        </ng-container>
+        <ng-container matColumnDef="Delete">
+          <th  *matHeaderCellDef mat-sort-header> Delete </th>
+          <td mat-cell *matCellDef="let categories">
+            <button mat-icon-button
+            aria-label="Example icon button with a delete icon" type="button" mat-raised-button color="warn"
+            matTooltip="Delete" (click)="showModal(categories.Id)">
+            <mat-icon>delete</mat-icon>
+          </button></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    </div>
+  </div>
+

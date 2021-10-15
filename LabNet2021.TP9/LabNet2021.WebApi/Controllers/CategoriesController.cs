@@ -15,18 +15,25 @@ namespace LabNet2021.WebApi.Controllers
         CategoriesLogic logic = new CategoriesLogic();
 
         //GET: All Categories
-        public List<CategoriesView> Get()
+        public IHttpActionResult Get()
         {
             try
             {
                 List<Categories> categories = logic.GetAll();
-                List<CategoriesView> categoriesView = categories.Select(c => new CategoriesView
+                if (categories != null)
                 {
-                    Id = c.CategoryID,
-                    CategoryName = c.CategoryName,
-                    Description = c.Description
-                }).ToList();
-                return categoriesView;
+                    List<CategoriesView> categoriesView = categories.Select(c => new CategoriesView
+                    {
+                        Id = c.CategoryID,
+                        CategoryName = c.CategoryName,
+                        Description = c.Description
+                    }).ToList();
+                    return Ok(categoriesView);
+                }
+                else
+                {
+                    return BadRequest("Get category failed.");
+                }
             }
             catch (Exception ex)
             {
@@ -35,18 +42,25 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         //GET: Category
-        public CategoriesView Get(int id)
+        public IHttpActionResult Get(int id)
         {
             try
             {
                 Categories categories = logic.Get(id);
-                CategoriesView categoriesView = new CategoriesView
+                if (categories != null)
                 {
-                    Id = categories.CategoryID,
-                    CategoryName = categories.CategoryName,
-                    Description = categories.Description
-                };
-                return categoriesView;
+                    CategoriesView categoriesView = new CategoriesView
+                    {
+                        Id = categories.CategoryID,
+                        CategoryName = categories.CategoryName,
+                        Description = categories.Description
+                    };
+                    return Ok(categoriesView);
+                }
+                else
+                {
+                    return BadRequest("Get category failed.");
+                }
             }
             catch (Exception ex)
             {
@@ -55,12 +69,20 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         //POST: Add Category
-        public void Post(CategoriesView categoriesView)
+        public IHttpActionResult Post(CategoriesView categoriesView)
         {
             try
             {
-                var categoryEntity = new Categories { CategoryName = categoriesView.CategoryName, Description = categoriesView.Description };
-                logic.Add(categoryEntity);
+                if (categoriesView != null)
+                {
+                    var categoryEntity = new Categories { CategoryName = categoriesView.CategoryName, Description = categoriesView.Description };
+                    logic.Add(categoryEntity);
+                    return Ok("Successfully added");
+                }
+                else
+                {
+                    return BadRequest("Add failed");
+                }
             }
             catch (Exception ex)
             {
@@ -69,18 +91,19 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         //PUT: Update Categories
-        public void Put(CategoriesView categoriesView)
+        public IHttpActionResult Put(CategoriesView categoriesView)
         {
             try
             {
-                if (logic.Find(categoriesView.Id))
+                if (categoriesView != null && logic.Find(categoriesView.Id))
                 {
                     var categoryEntity = new Categories { CategoryID = categoriesView.Id, CategoryName = categoriesView.CategoryName, Description = categoriesView.Description };
                     logic.Update(categoryEntity);
+                    return Ok("Successfully modified");
                 }
                 else
                 {
-                    throw new Exception("The id is not valid.");
+                    return BadRequest("Modification failed");
                 }
             }
             catch (Exception ex)
@@ -90,11 +113,19 @@ namespace LabNet2021.WebApi.Controllers
         }
 
         //DELETE: Delete Categories
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
             try
             {
-                logic.Delete(id);
+                if (logic.Find(id))
+                {
+                    logic.Delete(id);
+                    return Ok("Successfully removed");
+                }
+                else
+                {
+                    return BadRequest("The id is not valid.");
+                }
             }
             catch (Exception ex)
             {

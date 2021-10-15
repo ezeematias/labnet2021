@@ -1,14 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%;
+html,
+body {
+  height: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-size: auto;
   background-position: absolute;
   width: 100%;
   color: #fff;
   background: url(assets/bg-pattern_02.png), #280b36;
-  background: url(assets/bg-pattern_02.png), -webkit-gradient(linear, right top, left top, from(#280b36), to(#520005));
-  background: url(assets/bg-pattern_02.png), linear-gradient(to left, #280b36, #520005)}
+  background: url(assets/bg-pattern_02.png),
+    -webkit-gradient(linear, right top, left top, from(#280b36), to(#520005));
+  background: url(assets/bg-pattern_02.png),
+    linear-gradient(to left, #280b36, #520005);
+}
 
 .navBar {
   background-size: auto;
@@ -16,16 +21,22 @@ html, body { height: 100%;
   position: relative;
   width: 100%;
   color: #fff;
-  background: -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
-  background: linear-gradient(to left, #7b4397, #dc2430)
+  background: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    from(#7b4397),
+    to(#dc2430)
+  );
+  background: linear-gradient(to left, #7b4397, #dc2430);
 }
 
-.form{
-  background-color: transparentize($color:#ffffff , $amount: 0.90);
+.form {
+  background-color: transparentize($color: #ffffff, $amount: 0.9);
 }
 
-.footer{
-  position:fixed;
+.footer {
+  position: fixed;
   bottom: 0;
   margin-top: 20pt;
   padding-top: 3px;
@@ -37,11 +48,49 @@ html, body { height: 100%;
   background-position: center;
   width: 100%;
   color: #fff;
-  background: -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
-  background: linear-gradient(to left, #7b4397, #dc2430)
+  background: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    from(#7b4397),
+    to(#dc2430)
+  );
+  background: linear-gradient(to left, #7b4397, #dc2430);
 }
 
-.table{
+.table {
   color: #fff;
   font-size: 11pt;
+}
+
+.buttonAdd {
+  float: right;
+  margin-left: 5px !important;
+}
+
+.mat-table {
+  background-color: transparent;
+  text-align: center;
+}
+
+.mat-header-cell {
+  text-align: center;
+  align-items: center;
+}
+
+.mat-cell {
+  vertical-align: middle;
+}
+
+td.mat-cell:last-of-type {
+  padding-right: 0pt !important;
+}
+
+td.mat-cell:first-of-type {
+  padding-left: 0pt !important;
+}
+
+.errorMessage {
+  color: rgb(255, 0, 0);
+  size: 5pt;
 }

@@ -1,18 +1,65 @@
-<div class="row justify-content-sm-center pt-5">
-  <div class="form col-sm-5 shadow round pb-3">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+<div *ngIf="edit==false && search==false" class="row justify-content-sm-center pt-3">
+  <div class="form col-sm-6 shadow round pb-3">
+<form  [formGroup]="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+  <div class="form-group">
+    <label class="col-form-label">Company Name</label>
+    <input matInput placeholder="Name" formControlName="companyName" type="text" class="form-control" required/>
+  <div class="errorMessage" *ngIf="getValue('companyName')?.invalid && (getValue('companyName').touched || getValue('companyName').dirty)">Length between 3 and 40 characters</div>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label">Phone</label>
+    <input matInput placeholder="(000) 0000-0000" formControlName="phone" type="tel" class="form-control" />
+    <div class="errorMessage" *ngIf="getValue('phone')?.invalid && (getValue('phone').touched || getValue('phone').dirty)">It is not a valid phone number</div>
+  </div>
+  <br />
+  <div>
+    <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="newShippers()">Save</button>
+    <button mat-raised-button color="warn" style="float: right;" (click)="onClickClean()">Clean</button>
+  </div>
+</form>
+</div>
+</div>
+
+<div *ngIf="edit" class="row justify-content-sm-center pt-5">
+  <div class="form col-sm-6 shadow round pb-3">
+    <form [formGroup]="form" (ngSubmit)="g.form.valid && onSubmit()" #g="ngForm">
+      <div class="form-group">
+        <label class="col-form-label">ID</label>
+        <input formControlName="id" type="text" class="form-control" readonly=false/>
+      </div>
       <div class="form-group">
         <label class="col-form-label">Company Name</label>
-        <input formControlName="companyName" type="text" class="form-control" />
+        <input matInput placeholder="Name" formControlName="companyName" type="text" class="form-control" required/>
       </div>
+      <div class="errorMessage" *ngIf="getValue('companyName')?.invalid && (getValue('companyName').touched || getValue('companyName').dirty)">Length between 3 and 40 characters</div>
       <div class="form-group">
         <label class="col-form-label">Phone</label>
-        <input formControlName="phone" type="tel" class="form-control" />
+        <input matInput placeholder="(000) 0000-0000" formControlName="phone" type="tel" class="form-control" />
+    <div class="errorMessage" *ngIf="getValue('phone')?.invalid && (getValue('phone').touched || getValue('phone').dirty)">It is not a valid phone number</div>
+
       </div>
       <br />
-      <button mat-raised-button color="primary" (click)="newShippers()">Save</button>
-      <button mat-raised-button color="warn" style="float: right;" (click)="onClickClean()">Clean</button>
+      <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="updateShippers()">Save</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="search" class="row justify-content-sm-center pt-5">
+  <div class="form col-sm-6 shadow round pb-3">
+    <form [formGroup]="form" (ngSubmit)="g.form.valid && onSubmit()" #g="ngForm">
+      <div class="form-group">
+        <label class="col-form-label">ID</label>
+        <input formControlName="id" type="number" class="form-control" matTooltip="Probando" required/>
+      <div class="errorMessage" *ngIf="getValue('id')?.invalid && (getValue('id').touched || getValue('id').dirty)">ID does not exist</div>
+      </div>
+      <br />
+      <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="sendMessageParent()">Search</button>
+  <button mat-raised-button color="warn" style="float: right;" (click)="sendCancelSearch()">Cancel</button>
+
     </form>
   </div>
 </div>
 <br><br><br>
+
+

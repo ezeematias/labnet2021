@@ -1,0 +1,66 @@
+
+<div *ngIf="edit==false && search==false" class="row justify-content-sm-center pt-3">
+  <div class="form col-sm-6 shadow round pb-3">
+<form  [formGroup]="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+  <div class="form-group">
+    <label class="col-form-label">Category Name</label>
+    <input matInput placeholder="Name" formControlName="categoryName" type="text" class="form-control" required/>
+  <div class="errorMessage" *ngIf="getValue('categoryName')?.invalid && (getValue('categoryName').touched || getValue('categoryName').dirty)">Length between 3 and 15 characters</div>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label">Description</label>
+    <input matInput placeholder="Description" formControlName="description" type="tel" class="form-control" />
+    <div class="errorMessage" *ngIf="getValue('description')?.invalid && (getValue('description').touched || getValue('description').dirty)">It is not a valid description</div>
+  </div>
+  <br />
+  <div>
+    <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="newCategories()">Save</button>
+    <button mat-raised-button color="warn" style="float: right;" (click)="onClickClean()">Clean</button>
+  </div>
+</form>
+</div>
+</div>
+
+<div *ngIf="edit" class="row justify-content-sm-center pt-5">
+  <div class="form col-sm-6 shadow round pb-3">
+    <form [formGroup]="form" (ngSubmit)="g.form.valid && onSubmit()" #g="ngForm">
+      <div class="form-group">
+        <label class="col-form-label">ID</label>
+        <input formControlName="id" type="text" class="form-control" readonly=false/>
+      </div>
+      <div class="form-group">
+        <label class="col-form-label">Category Name</label>
+        <input matInput placeholder="Name" formControlName="categoryName" type="text" class="form-control" required/>
+      </div>
+      <div class="errorMessage" *ngIf="getValue('categoryName')?.invalid && (getValue('categoryName').touched || getValue('categoryName').dirty)">Length between 3 and 15 characters</div>
+      <div class="form-group">
+        <label class="col-form-label">Description</label>
+        <input matInput placeholder="Description" formControlName="description" type="tel" class="form-control" />
+    <div class="errorMessage" *ngIf="getValue('description')?.invalid && (getValue('description').touched || getValue('description').dirty)">It is not a valid description</div>
+
+      </div>
+      <br />
+      <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="updateCategories()">Save</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="search" class="row justify-content-sm-center pt-5">
+  <div class="form col-sm-6 shadow round pb-3">
+    <form [formGroup]="form" (ngSubmit)="g.form.valid && onSubmit()" #g="ngForm">
+      <div class="form-group">
+        <label class="col-form-label">ID</label>
+        <input formControlName="id" type="number" class="form-control" required/>
+      <div class="errorMessage" *ngIf="getValue('id')?.invalid && (getValue('id').touched || getValue('id').dirty)">ID does not exist</div>
+      </div>
+      <br />
+      <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="sendMessageParent()">Search</button>
+  <button mat-raised-button color="warn" style="float: right;" (click)="sendCancelSearch()">Cancel</button>
+
+    </form>
+  </div>
+</div>
+<br><br><br>
+
+
+
